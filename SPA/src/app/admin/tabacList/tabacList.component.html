@@ -1,0 +1,35 @@
+<section class="wrapper">
+    <div class="container-fostrap">
+        <div>
+            <h1 class="heading">
+                Tabacs
+            </h1>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" *ngFor="let tabac of tabacs">
+                        <div class="card">
+                          <div class="card-header">
+                            {{ tabac.categoryId == 1 ? "cigare" : "cigarette" }}
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title">{{tabac.name}}</h5>
+                              <p class="card-text" style="text-align: left;"><pre><b>Quantity per Table:</b><span class="pull-right"> {{tabac.quantityPerTable}}</span></pre>
+                              <hr class="divider">
+                              <p class="card-text" style="text-align: left;"><pre><b>Price in Cfa:</b><span class="pull-right">{{tabac.priceInCfa | number}}</span></pre>
+                                <hr class="divider">
+                              <p class="card-text" style="text-align: left;" *ngIf="value"><pre><b>Price in $:</b><span class="pull-right">{{tabac.priceInCfa/value | number}}</span></pre>
+                          </div>
+                          <div class="card-footer text-center">
+                            <button class="btn btn-info mr-1" [routerLink]="['/GetTabac', tabac.id]" >Detail</button>
+                            <button class="btn btn-warning mr-1" [routerLink]="['/UpdateTabac', tabac.id]">Edit</button>
+                            <button class="btn btn-danger" (click)="delete(tabac.id)">Delete</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="#">App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav mr-auto" *ngIf="loggedIn()">
+          <li *appHasRole="['admin']" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tabacs
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/Cigare']" >Cigare</a>
+              <a class="dropdown-item" [routerLink]="['/Cigarette']" >Cigarette</a>
+              <hr/>
+              <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal" >Cfa &nbsp; <i class="fa fa-usd" style="font-size:15px" aria-hidden="true"></i></a>
+            </div>
+          </li>
+          
+          <li *appHasRole="['admin']" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Transactions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['/transaction']" >Transaction</a>
+              <a class="dropdown-item" [routerLink]="['/TransactionHistory']" >Transaction history</a>
+            </div>
+          </li>
+
+          <li *appHasRole="['admin']" class="nav-item">
+            <a class="nav-link" [routerLink] = "['/depositorList']">Depositor</a>
+          </li>
+          <li *appHasRole="['employee']" class="nav-item">
+            <a class="nav-link" [routerLink] = "['/Order']">Orders</a>
+          </li>
+          <li *appHasRole="['admin']" class="nav-item">
+            <a class="nav-link" [routerLink] = "['/OrderAdmin']">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink] = "['/OrderHistory']">Orders history</a>
+          </li>
+      </ul>
+      <ul class="navbar-nav"*ngIf="loggedIn()">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Welcome {{authService.decodeToken?.unique_name | titlecase}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> &nbsp; Logout</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav" *ngIf="!loggedIn()">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink] = "['/register']">register</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink] = "['/login']">login</a>
+        </li>
+      </ul>
+  </div>
+</div>
+</nav>
+
+<!-- model -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <label>the value of Cfa :</label>
+          <div class="input-group">
+            <input type="number" min="0" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" class="form-control" [(ngModel)]="cfa">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-usd"></i></span>
+            </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="setCfa()" data-dismiss="modal" [disabled] = "!(cfa>0)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

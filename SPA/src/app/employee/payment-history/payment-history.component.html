@@ -1,0 +1,42 @@
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <a class="btn btn-info mr-auto" (click)="back()">Back</a>
+            <center><h3 *ngIf="cName">Order of {{cName | titlecase}}</h3></center>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of payments</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <th scope="col">Payed at</th>
+                            <th scope="col">Payment</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let p of payments" >
+                            <td>{{p.date | date : 'yyyy-MM-dd'}}</td>
+                            <td>{{p.price | number}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Total</th>
+                            <th scope="col">{{total | number}}</th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

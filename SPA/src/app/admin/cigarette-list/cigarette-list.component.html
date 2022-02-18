@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5" style="margin-bottom: 20px;">
+            <button class="btn btn-primary pull-right" (click)="download()">export Cigarette</button>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-success" style="margin-right: 10px;" [routerLink]="['/AddTabac/2']">Add new Cigarette</a>
+
+            <input type="text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;" class="form-control" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" placeholder="Search by name..." (keyup)="searchByName()">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <app-tabacList [tabacs]=tabacs *ngIf="tabacs"></app-tabacList>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<form [formGroup]="emailForm" (ngSubmit)="isEmailExist()" *ngIf="!send">
+
+    <div class="form-group">
+        <center><label>Email</label></center>
+        <input type="text" 
+        [ngClass]="{'is-invalid': emailForm.get('email').errors
+        && emailForm.get('email').touched}"
+        class="form-control" placeholder="Email" formControlName="email">
+
+        <div class="invalid-feedback" 
+        *ngIf="emailForm.get('email').hasError('required')
+        && emailForm.get('email').touched">Please choose a email</div>
+
+        <div class="invalid-feedback" 
+        *ngIf="emailForm.get('email').hasError('email')
+        && emailForm.get('email').touched">email format wrong
+        </div>
+    </div>
+    <center>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit" [disabled]="!emailForm.valid || wait">Send</button>&nbsp;
+            <button class="btn btn-danger" type="button" (click)="hideForm()">Cancel</button>
+        </div>
+    </center>
+</form>
+
+<center *ngIf="send"><h4>Sended successfully check your email</h4></center>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <div class="input-group">
+              <a class="btn btn-info" (click)="back()">Back</a>
+            </div>
+        </div>
+          <h3 style="text-align: center;" *ngIf="order">Order of {{order.customerName}} </h3>
+      </div>
+      <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of orders</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <th scope="col">Tabac name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let o of orders">
+                            <td>{{o.nameTabac}}</td>
+                            <td>{{o.category == 1?"Cigare":"Cigarette"}}</td>
+                            <td>{{o.quantity | number}}</td>
+                            <td>{{o.quantity * o.price | number}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Total</th>
+                            <th scope="col">{{total | number}}</th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

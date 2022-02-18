@@ -1,0 +1,23 @@
+.table > tbody > tr > td, .table > tbody > tr > th, .table > thead > tr ,.table > thead > tr >th{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

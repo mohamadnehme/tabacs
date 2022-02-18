@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+    <div class="py-5 text-center">
+        <h2>Login</h2>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                <!-- username -->
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" 
+                    [ngClass]="{'is-invalid': loginForm.get('username').errors
+                    && loginForm.get('username').touched}"
+                    class="form-control" placeholder="Username" formControlName="username">
+                    <div class="invalid-feedback">Please choose a username</div>
+                </div>
+
+                <!-- password -->
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" 
+                    [ngClass]="{'is-invalid': loginForm.get('password').errors
+                    && loginForm.get('password').touched}"
+                    class="form-control" placeholder="Password" formControlName="password">
+                
+                    <div class="invalid-feedback" 
+                    *ngIf="loginForm.get('password').hasError('required')
+                    && loginForm.get('password').touched">Password is required
+                    </div>
+                
+                    <div class="invalid-feedback" 
+                    *ngIf="loginForm.get('password').hasError('minlength')
+                    && loginForm.get('password').touched">Password must be at least 4 characteres
+                    </div>
+                
+                    <div class="invalid-feedback" 
+                    *ngIf="loginForm.get('password').hasError('maxlength')
+                    && loginForm.get('password').touched">Password cannot exceed 8 characteres
+                    </div>
+                    
+                </div>
+                    
+                <a class="btn btn-light" (click)="show = true"><small>Forget password</small></a>
+                <app-enter-email *ngIf="show" (hide)="hide()"></app-enter-email>
+                <div class="form-group text-center" style="margin-top: 20px;">
+                    <button class="btn btn-success mr-2" type="submit" [disabled]="!loginForm.valid || wait" *ngIf="!show">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

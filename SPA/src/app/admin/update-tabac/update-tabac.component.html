@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+    <div class="py-5 ">
+        <a class="btn btn-danger" [routerLink] = [back]>Back</a>
+        <h2 class="text-center" *ngIf="tabac.categoryId == 1">Edit Cigare</h2>
+        <h2 class="text-center" *ngIf="tabac.categoryId == 2">Edit Cigarette</h2>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="tabacForm" (ngSubmit)="update()" *ngIf="tabac">
+
+                <!-- name -->
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" 
+                    [ngClass]="{'is-invalid': tabacForm.get('name').errors
+                    && tabacForm.get('name').touched}"
+                    class="form-control" placeholder="Name" formControlName="name">
+                    <div class="invalid-feedback">Please choose a name</div>
+                </div>
+
+                <!-- description -->
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" rows="10"
+                    [ngClass]="{'is-invalid': tabacForm.get('description').errors
+                    && tabacForm.get('description').touched}"
+                    class="form-control" placeholder="Description" formControlName="description"></textarea>
+                    <div class="invalid-feedback">Please choose a description</div>
+                </div>
+
+                <!-- quantity -->
+
+                <div class="form-group">
+                    <label>Quantity Per table</label>
+                    <input type="number" 
+                    [ngClass]="{'is-invalid': tabacForm.get('quantityPerTable').errors
+                    && tabacForm.get('quantityPerTable').touched}"
+                    class="form-control" placeholder="Quantity Per table" formControlName="quantityPerTable">
+                    <div class="invalid-feedback">Please choose a quantity</div>
+                </div>
+
+                <!-- priceInCfa -->
+
+                <div class="form-group">
+                    <label>Price in Cfa</label>
+                    <input type="number" 
+                    [ngClass]="{'is-invalid': tabacForm.get('priceInCfa').errors
+                    && tabacForm.get('priceInCfa').touched}"
+                    class="form-control" placeholder="Price in Cfa" formControlName="priceInCfa">
+                    <div class="invalid-feedback">Please choose a price</div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success mr-2" type="submit" [disabled]="!tabacForm.dirty || (!tabacForm.valid || wait)">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

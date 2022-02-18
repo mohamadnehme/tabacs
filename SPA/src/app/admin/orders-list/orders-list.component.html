@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <div class="input-group">
+              
+            </div>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-success" style="margin-right: 10px;" (click)="openOrder()">Add new Customer</a>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of Customers</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <th scope="col">Customer name</th>
+                            <th scope="col">Date</th>
+                            <!-- <th scope="col">Payment Received</th>
+                            <th scope="col">Payment Remaining</th> -->
+                            <th scope="col">Total Price</th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let c of customers" >
+                            <td>{{c.name | titlecase}}</td>
+                            <td>{{c.date | date : 'yyyy-MM-dd'}}</td>
+                            <!-- <td>{{o.receivedPrice | number}}</td>
+                            <td>{{o.remainingPrice | number}}</td> -->
+                            <td>{{c.price | number}}</td>
+                            <td><a class="btn btn-danger" (click)=delete(c.id)>Delete</a></td>
+                            <td><a class="btn btn-info" [routerLink]="['/CustomerDetail',c.id]">Detail</a></td>
+                            <!-- <td><a class="btn btn-info" [routerLink]="['/PaymentHistory',o.id]">Payments</a></td>
+                            <td><a class="btn btn-success btn-sm" [routerLink]="['/OrderPayment',o.id]">Add Payment</a></td>
+                            <td><a class="btn btn-success btn-sm" [routerLink]="['/AddToOrder',o.id]">Add To Order</a></td> -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

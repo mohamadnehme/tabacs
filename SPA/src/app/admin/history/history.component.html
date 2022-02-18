@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5"> 
+            <div class="input-group">
+                
+            </div> 
+        </div>
+      </div>
+      <h3 style="text-align: center;">History of transactions</h3>
+      <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of transactions</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <th scope="col">Title</th>
+                            <th scope="col">Total price</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Date</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let t of trans" >
+                            <td>{{t.title | titlecase}}</td>
+                            <td>{{t.price | number}}</td>
+                            <td>{{t.from}}</td>
+                            <td>{{t.to}}</td>
+                            <td>{{t.date | date : 'yyyy-MM-dd'}}</td>
+                            <th><a class="btn btn-info" [routerLink] = "['/TransHistoryDetail',t.id]">Detail</a></th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

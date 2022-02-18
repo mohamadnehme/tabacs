@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <a class="btn btn-danger" style="text-align: left;" (click)="back()">Back</a>
+            <h2 style="text-align: center;">Add Payment</h2>
+          </div>
+    </div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                <!-- name coin -->
+
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label style="font-weight: bold;">Name Customer</label>
+                        <input type="text" [value]="customer.name" [disabled]=true
+                        class="form-control">
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label style="font-weight: bold;">Total Price</label>
+                        <input type="text" [value]="order.price|number" [disabled]=true
+                        class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label style="font-weight: bold;">Received Payment</label>
+                        <input type="text" [value]="order.receivedPrice|number" [disabled]=true
+                        class="form-control">
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label style="font-weight: bold;">Remaining Payment</label>
+                        <input type="text" [value]="order.remainingPrice|number" [disabled]=true
+                        class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label style="font-weight: bold;">Payment</label>
+                        <input type="number" [value]="0" [(ngModel)]="coin"
+                        class="form-control">
+                        <div class="invalid-feedback">Please choose a number</div>
+                    </div>
+                </div>
+                <div class="form-group text-center" style="margin-top: 50px; margin-bottom: 50px;">
+                    <button class="btn btn-success mr-2" type="button" [disabled]="coin <= 0 || wait" (click)="addPayment()">Add</button>
+                </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

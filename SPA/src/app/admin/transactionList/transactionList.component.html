@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <div class="input-group">
+              
+            </div>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-success" style="margin-right: 10px;" [routerLink]="['/AddTransaction']">Add new Transaction</a>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of transactions</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <!-- <th scope="col">#</th> -->
+                            <th scope="col">Title</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Date</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let t of trans" >
+                            <!-- <th scope="row">{{t.id}}</th> -->
+                            <td>{{t.title | titlecase}}</td>
+                            <td>{{t.price | number}}</td>
+                            <td>{{t.from}}</td>
+                            <td>{{t.to}}</td>
+                            <td>{{t.date | date : 'yyyy-MM-dd'}}</td>
+                            <td><a class="btn btn-danger" (click)=delete(t.id)>Delete</a></td>
+                            <td><a class="btn btn-info" [routerLink]="['/TransactionDetail',t.id]">Detail</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/AddShipment',t.id]">Add shipment</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Tabacs20210702101539" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\New\ folder\\DatingApp\ -\ Copy\\DatingApp\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <div class="input-group">
+              <a class="btn btn-danger mr-auto" [routerLink]="['/transaction']">Back</a>
+              <button class="btn btn-success" [disabled]="name==null || name=='' || wait" (click)="save()">Save</button>
+            </div>
+            <h2 style="text-align: center; margin-top: 20px;">Choose the merchandise</h2>
+        </div>
+        <center><input type="text" class="form-control" style="width: 500px;" [(ngModel)]="name" placeholder="Name of Charge"></center>
+      </div>
+      <div class="container" style="margin-top: 50px;" *ngIf="tabacs">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <caption>List of tabacs</caption>
+                        <thead>
+                          <tr class="table-active">
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity per table</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let tabac of tabacs">
+                            <td>{{tabac.name}}</td>
+                            <td>{{tabac.categoryId == 1?"Cigare":"Cigarette"}}</td>
+                            <td>{{tabac.priceInCfa | number}}</td>
+                            <td><input type="number" (change)="Total()" class="form-control" [defaultValue]="0" [min]="0" [(ngModel)]="tabac.quantityPerTable" [disabled]="!tabac.ischecked"></td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" [value]="tabac.id" id="flexCheckDefault" (change) ="test($event,tabac)">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Total</th>
+                            <th> {{total | number}} Cfa</th>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

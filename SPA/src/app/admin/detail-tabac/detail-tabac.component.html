@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="bg-light">
+    <div class="container">
+    <div class="py-5 ">
+        <a class="btn btn-info" [routerLink] = [back]>Back</a>
+        <h2 class="text-center" *ngIf="tabac.categoryId == 1">Cigare detail</h2>
+        <h2 class="text-center" *ngIf="tabac.categoryId  == 2">Cigarette detail</h2>
+    </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <form *ngIf="tabac">
+                    <!-- name -->
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" [value]=tabac.name [disabled]=true class="form-control">
+                    </div>
+
+                    <!-- description -->
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="10" [disabled]=true [value]=tabac.description class="form-control"></textarea>
+                    </div>
+                    <!-- quantity -->
+
+                    <div class="form-group">
+                        <label>Quantity Per table</label>
+                        <input type="text" [disabled]=true [value]=tabac.quantityPerTable class="form-control">
+                    </div>
+
+                    <!-- priceInCfa -->
+
+                    <div class="form-group">
+                        <label>Price in Cfa</label>
+                        <input type="text" [disabled]=true [value]=tabac.priceInCfa|number class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
